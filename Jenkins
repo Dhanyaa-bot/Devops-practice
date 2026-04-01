@@ -2,22 +2,23 @@ pipeline {
     agent any
 
     stages {
+
         stage('Clone') {
             steps {
-                echo 'Cloning code...'
+                git 'https://github.com/Dhanyaa-bot/Devops-practice.git'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                sh 'echo Building project...'
+                sh 'docker build -t app .'
             }
         }
 
-        stage('Test') {
+        stage('Run Container') {
             steps {
-                sh 'echo Running tests...'
+                sh 'docker run -d -p 3000:3000 app'
             }
         }
     }
-}
+
