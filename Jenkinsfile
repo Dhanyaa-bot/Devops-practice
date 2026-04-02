@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t myapp app .'
+                sh 'docker build -t myapp  .'
             }
         }
 
